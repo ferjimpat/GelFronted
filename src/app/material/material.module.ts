@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+
+
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -25,6 +30,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     MatDialogModule,
     MatGridListModule,
     MatFormFieldModule,

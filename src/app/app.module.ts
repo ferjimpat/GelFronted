@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -10,12 +10,18 @@ import {HidrogelPageComponent} from './shared/hidrogel-page/hidrogel-page.compon
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from './material/material.module';
 
+import localeEs from '@angular/common/locales/es-AR';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData( localeEs );
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HidrogelPageComponent
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,9 @@ import {MaterialModule} from './material/material.module';
     FlexLayoutModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-AR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

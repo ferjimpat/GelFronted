@@ -3,8 +3,8 @@ export interface Equiposgel {
   equipo: string;
   modelo: string;
   lugarInstalacion: string;
-  fechacompra: string;
-  ticketcompra?: string; // http:// ... direccion .. .com/img.png [] strinh
+  fechacompra: Date;
+  ticketcompra?: string[]; // http:// ... direccion .. .com/img.png [] strinh
 }
 
 export interface Usuario {

@@ -14,6 +14,7 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmarBorrarComponent } from './components/confirmar-borrar/confirmar-borrar.component';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { TablaEquiposComponent } from './components/tabla-equipos/tabla-equipos.component';
 
 
 
@@ -27,7 +28,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     EquipoTarjetaComponent,
     ImagenPipe,
     ConfirmarBorrarComponent,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+    TablaEquiposComponent
   ],
   imports: [
     CommonModule,

@@ -11,14 +11,37 @@ por lineas-->
      fxLayoutAlign="center"
      fxLayoutGap="20px" >
   <!-- fxFlex="20"-> indicamos que cada card tien un 20% del row  -->
-  <div  fxFlex="20"
-        fxFlex.lg="15"
-        fxFlex.sm="30"
-        *ngFor="let e of equipos">
+<!--  <div  fxFlex="20"-->
+<!--        fxFlex.lg="15"-->
+<!--        fxFlex.sm="30"-->
+<!--        *ngFor="let e of equipos">-->
 
 
-    <app-equipo-tarjeta [equipo]="e"></app-equipo-tarjeta>
-
+<!--    <app-equipo-tarjeta [equipo]="e"></app-equipo-tarjeta>-->
+  <div fxFlex="85" >
+  <app-tabla-equipos [equipos]="equipos"></app-tabla-equipos>
   </div>
 
+</div>
+
+<!-- Vamos a crear una alerta parfa cuando no haya nada en la base de datos -->
+<div fxLayout="row" class=" alert alert-danger text-center mt3"
+     *ngIf="equipos.length ===0 " >
+  <h1 >Sin datos en la base de datos  &nbsp;</h1>
+  <p>
+    <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
+<!-- Spinner que aparecerá en el momento que tarde en cargar los datos en la pantalla-->
+<div *ngIf="cargando"
+     class="alert alert-info text-center mt-3 animated fadeIn slow">
+  <h5> Cargando... !!! </h5>
+
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere, Porfavor!
+  </p>
 </div>

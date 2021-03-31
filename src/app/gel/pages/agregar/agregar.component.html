@@ -26,10 +26,16 @@
          </mat-form-field>
     </div>
 
-    <mat-form-field >
-      <mat-label>Fecha compra</mat-label>
-      <input matInput type="text" [(ngModel)]="equipo.fechacompra" required>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Fecha de compra"  [(ngModel)]="equipo.fechacompra" style="display: inline; width: 300px">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
+
+    <!--    <mat-form-field >-->
+<!--      <mat-label>Fecha compra</mat-label>-->
+<!--      <input matInput type="text" [(ngModel)]="equipo.fechacompra" required>-->
+<!--    </mat-form-field>-->
 
     <mat-form-field >
       <mat-label>Lugar instalado</mat-label>

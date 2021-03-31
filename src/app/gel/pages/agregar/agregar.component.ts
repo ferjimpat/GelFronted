@@ -36,8 +36,8 @@ export class AgregarComponent implements OnInit {
   equipo:      '',
   modelo:      '',
   lugarInstalacion: '',
-  fechacompra:  '',
-  ticketcompra: '',
+  fechacompra: new Date(),
+  ticketcompra: [],
 };
 
   constructor(private gelServicio: GelService,
@@ -73,7 +73,7 @@ export class AgregarComponent implements OnInit {
 
     if ( this.equipo.equipo.trim().length === 0 ||
          this.equipo.modelo.trim().length === 0 ||
-         this.equipo.fechacompra.trim().length === 0 ||
+
          this.equipo.lugarInstalacion.trim().length === 0 ||
          this.archivos.length !== 1   ){
       // añadir un mesaje emergente para indicar que rellene todos los campos

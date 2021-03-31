@@ -19,7 +19,7 @@ export class FileItem implements Equiposgel {
   }
 
   equipo = '';
-  fechacompra = '';
+  fechacompra = new Date();
   lugarInstalacion = '';
   modelo = '';
 
