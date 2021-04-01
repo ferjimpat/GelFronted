@@ -6,10 +6,10 @@ import {MatDialog} from '@angular/material/dialog';
 
 import {Equiposgel} from '../../interfaces/equipogel.interface';
 import {GelService} from '../../services/gel.service';
-import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
+
 import {FileItem} from '../../models/file-item';
 import {CargaImagenesService} from '../../services/carga-imagenes.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 
 
 
@@ -31,35 +31,48 @@ export class AgregarComponent implements OnInit {
   estaSobreElemento = false  ;
   archivos: FileItem[] = [] ;
 
-  fichaEquipo = this.fb.group( {
-    id: [''],
-    equipo: ['', Validators.required],
-    modelo: ['', Validators.required],
-    lugarInstalacion: ['', Validators.required],
-    fechaCompra: [''],
-    ticketCompra: ['']
-  });
+  // fichaEquipo = this.fb.group( {
+  //   id: [''],
+  //   equipo: ['', Validators.required],
+  //   modelo: ['', Validators.required],
+  //   lugarInstalacion: ['', Validators.required],
+  //   fechaCompra: [''],
+  //   ticketCompra: ['']
+  // });
 
-//
-//   equipo: Equiposgel = {
-//   equipo:      '',
-//   modelo:      '',
-//   lugarInstalacion: '',
-//   fechacompra: new Date(),
-//   ticketcompra: [],
-// };
+
+  fichaEquipo: Equiposgel = {
+  equipo:      '',
+  modelo:      '',
+  lugarInstalacion: '',
+  fechacompra: new Date(),
+  ticketcompra: [],
+};
 
   constructor( private fb: FormBuilder,
-              private gelServicio: GelService,
-              private activateRoute: ActivatedRoute,
-              private cargaImagenesService: CargaImagenesService,
-              private router: Router,
-              private snackBar: MatSnackBar,
-              private dialog: MatDialog  ) { }
+               private gelServicio: GelService,
+               private activateRoute: ActivatedRoute,
+               private cargaImagenesService: CargaImagenesService,
+               private router: Router,
+               private snackBar: MatSnackBar,
+               private dialog: MatDialog  ) { }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
 
+    if ( !this.router.url.includes('editar')){  return;  }
 
+    // desestructuracion ({ id })
+    this.activateRoute.params
+      .pipe(
+        switchMap( ({id}) => this.gelServicio.getEquipoPorId( id ))
+      )
+      .subscribe( resp => {
+        this.fichaEquipo = resp;
+        console.log( this.fichaEquipo);
+      });
+
+    // como this.equipo esta asociado a los campos mediante el [ (ngModel)], se autorellenara
+    // los campos
 
   }
 

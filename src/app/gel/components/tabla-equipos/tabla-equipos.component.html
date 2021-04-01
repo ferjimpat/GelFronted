@@ -1,0 +1,36 @@
+<table class="table table-bordered table-striped " >
+
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Equipo</th>
+    <th>fecha compra</th>
+    <th>lugar instalacion</th>
+    <th> Detalles </th>
+    <th> editar </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of equipos">
+    <td>{{e.id }}</td>
+    <td>{{e.equipo}}</td>
+    <td>{{e.fechacompra | date }}</td>
+    <td> {{ e.lugarInstalacion }} </td>
+    <td>
+      <button mat-raised-button
+              color="basic"
+              [routerLink]="['/equipos', e.id]"   >
+        Leer más ...
+      </button>
+    </td>
+    <td>
+      <button mat-raised-button
+              color="primary"
+              [routerLink]="['/equipos/editar', e.id]"   >
+        Editar ...
+      </button>
+    </td>
+  </tr>
+  </tbody>
+
+</table>

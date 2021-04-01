@@ -11,8 +11,8 @@ export class ImagenPipe implements PipeTransform {
     // console.log('Pipe imagen procesado', equipo);
 
     // CONTROLANDO  LAS EXCEPTIONES
-
-    if (!equipo.id || equipo.ticketcompra?.length === 0 ){
+    // if (!equipo.id || equipo.ticketcompra?.length === 0 ){
+    if ( equipo.ticketcompra?.length === 0 ){
       return `assets/drop-images.png`;
     }
     return `assets/${ equipo.ticketcompra }.jpg`;

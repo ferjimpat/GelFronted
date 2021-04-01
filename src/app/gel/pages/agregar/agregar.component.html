@@ -2,35 +2,35 @@
 <h1>
   <!--    <span *ngIf="equipo.id">Editar</span>-->
   <!--    <span *ngIf="!equipo.id">Nuevo</span>-->
-  {{  ( fichaEquipo.value.id ) ? 'Nuevo': 'Editar' }}
+  {{  ( fichaEquipo.id ) ? 'Editar': 'Nuevo' }}
   equipo:
-  <small> {{ fichaEquipo.value.id }}</small>
+  <small> {{ fichaEquipo.id }}</small>
 </h1>
 
-<form [formGroup]="fichaEquipo" >
+<div  class="form" >
 
 <!--  Columna formulario-->
-  <div  fxLayout="row" fxFlex="100" >
-           <div   fxFlex="80" fxLayout="column">
+  <div  fxLayout="row" fxFlex="40" >
+           <div   fxFlex="60" fxLayout="column">
 
                   <mat-form-field >
                     <mat-label>Equipo</mat-label>
-                    <input matInput type="text" formControlName="equipo" required>
+                    <input matInput type="text"  [(ngModel)]="fichaEquipo.equipo" required>
                   </mat-form-field>
 
                   <mat-form-field >
                     <mat-label>Modelo</mat-label>
-                    <input matInput type="text" formControlName="modelo" required>
+                    <input matInput type="text" [(ngModel)]="fichaEquipo.modelo"  required>
                   </mat-form-field>
 
                   <mat-form-field >
                     <mat-label>Lugar instalacion</mat-label>
-                    <input matInput type="text" formControlName="lugarInstalacion" required>
+                    <input matInput type="text" [(ngModel)]="fichaEquipo.lugarInstalacion"  required>
                   </mat-form-field>
 
                     <mat-form-field>
-                    <input matInput [matDatepicker]="picker1"  formControlName="fechaCompra" placeholder="Fecha de compra"
-                           style="display: inline; width: 300px">
+                    <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
+                           style="display: inline; width: 100px">
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
@@ -39,21 +39,36 @@
   </div>
 <!-- Columna donde se colocara el ingreso de las imagens-->
   <div  fxLayout="row" fxFlex="100" >
-        <div fxFlex="100" fxLayout="column">
+         <div fxFlex="100" fxLayout="column">
+<!--        Solo se mostrará cuando editemos el objeto-->
+<!--           <div  *ngIf="fichaEquipo.value.id">-->
+           <div *ngIf="fichaEquipo.id">
+             <h3>Documentos anexados:</h3>
+             <label *ngIf="fichaEquipo.ticketcompra.length === 0">
+                No se ha anexado ningun archivo
+             </label>
+<!--             <img [src]="fichaEquipo.value.ticketcompra[0] | imagen"  alt="{{ fichaEquipo.value.id }}">-->
+<!--             <img src="assets/drop-images.png" class="poster">-->
+             <label *ngIf="fichaEquipo.ticketcompra.length !== 0"> descripcion de los documentos anexados</label>
+           </div>
 
-    <mat-form-field >
-      <mat-label>Modelo</mat-label>
-      <input matInput type="text" formControlName="ticketCompra" required>
-    </mat-form-field>
+<!--        Solo se mostrarña cuando queramos crear otro objeto   -->
+          <div *ngIf="!fichaEquipo.id">
+            <h3>Anexa imagen o pdf</h3>
+          </div>
 
-  </div>
+
+          </div>
       </div>
 
-</form>
+<!--  Botones para guardar - borrar - limpiar formulario -->
+
+
+</div>
 
 <hr>
 <br>
 
 <div class="m-t-10">
-  <h1>Form value: {{ fichaEquipo.value | json }}</h1>
+  <h1>Form value: {{ fichaEquipo | json }}</h1>
 </div>
