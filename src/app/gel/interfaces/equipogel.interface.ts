@@ -1,10 +1,12 @@
+import {FileItem} from '../models/file-item';
+
 export interface Equiposgel {
   id?: string;
   equipo: string;
   modelo: string;
   lugarInstalacion: string;
   fechacompra: Date;
-  ticketcompra?: string[]; // http:// ... direccion .. .com/img.png [] strinh
+  ticketcompra?: FileItem[]; // http:// ... direccion .. .com/img.png [] strinh
 }
 
 export interface Usuario {

@@ -1,19 +1,13 @@
 
-<h1>
-  <!--    <span *ngIf="equipo.id">Editar</span>-->
-  <!--    <span *ngIf="!equipo.id">Nuevo</span>-->
-  {{  ( fichaEquipo.id ) ? 'Editar': 'Nuevo' }}
-  equipo:
-  <small> {{ fichaEquipo.id }}</small>
-</h1>
+<h1>{{( fichaEquipo.id) ? 'Editar':'Nuevo'}} equipo: <small> {{ fichaEquipo.id }}</small></h1>
 
-<div  class="form" >
-
+<div  >
+<div fxLayout="row">
 <!--  Columna formulario-->
   <div  fxLayout="row" fxFlex="40" >
            <div   fxFlex="60" fxLayout="column">
 
-                  <mat-form-field >
+                  <mat-form-field>
                     <mat-label>Equipo</mat-label>
                     <input matInput type="text"  [(ngModel)]="fichaEquipo.equipo" required>
                   </mat-form-field>
@@ -29,16 +23,16 @@
                   </mat-form-field>
 
                     <mat-form-field>
-                    <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
-                           style="display: inline; width: 100px">
-                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
+                            <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
+                           style="display: inline; width: 100px" required>
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                             <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
 
             </div>
   </div>
 <!-- Columna donde se colocara el ingreso de las imagens-->
-  <div  fxLayout="row" fxFlex="100" >
+  <div  fxLayout="row" fxFlex="100">
          <div fxFlex="100" fxLayout="column">
 <!--        Solo se mostrará cuando editemos el objeto-->
 <!--           <div  *ngIf="fichaEquipo.value.id">-->
@@ -60,8 +54,25 @@
 
           </div>
       </div>
-
+</div>
 <!--  Botones para guardar - borrar - limpiar formulario -->
+
+  <div fxLayout="row" fxLayoutGap="50px">
+
+    <button mat-raised-button color="primary" (click)="guardar()">
+      <mat-icon>{{  ( fichaEquipo.id ) ? 'edit': 'save' }}</mat-icon>
+    </button>
+<!--    <span class="spacer"></span>-->
+
+    <button  mat-raised-button (click)="borrarEquipo( )" [disabled]="!fichaEquipo.id"  color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button mat-raised-button color="primary" (click)="LimpiarImagenes()">
+      <mat-icon>image</mat-icon>
+    </button>
+
+  </div>
 
 
 </div>
@@ -72,3 +83,5 @@
 <div class="m-t-10">
   <h1>Form value: {{ fichaEquipo | json }}</h1>
 </div>
+
+
