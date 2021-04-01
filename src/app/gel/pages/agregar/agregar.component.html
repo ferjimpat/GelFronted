@@ -2,383 +2,58 @@
 <h1>
   <!--    <span *ngIf="equipo.id">Editar</span>-->
   <!--    <span *ngIf="!equipo.id">Nuevo</span>-->
-  {{  ( equipo.id ) ? 'Editar': 'Nuevo' }}
+  {{  ( fichaEquipo.value.id ) ? 'Nuevo': 'Editar' }}
   equipo:
-  <small> {{ equipo.id }}</small>
+  <small> {{ fichaEquipo.value.id }}</small>
 </h1>
 
+<form [formGroup]="fichaEquipo" >
 
-<div  class="form" fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
+<!--  Columna formulario-->
+  <div  fxLayout="row" fxFlex="100" >
+           <div   fxFlex="80" fxLayout="column">
 
-  <div    fxFlex="50" fxLayout="column">
-    <!-- Primera linea del formulario
-      fxLayout.xs="column" -> para pantallas pequeñas-->
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                  <mat-form-field >
+                    <mat-label>Equipo</mat-label>
+                    <input matInput type="text" formControlName="equipo" required>
+                  </mat-form-field>
 
-      <mat-form-field fxFlex="100">
-        <mat-label>Equipo</mat-label>
-        <input matInput type="text" [(ngModel)]="equipo.equipo" required>
-      </mat-form-field>
+                  <mat-form-field >
+                    <mat-label>Modelo</mat-label>
+                    <input matInput type="text" formControlName="modelo" required>
+                  </mat-form-field>
 
-      <mat-form-field fxFlex="100">
-         <mat-label>Modelo</mat-label>
-         <input matInput type="text" [(ngModel)]="equipo.modelo" required>
-         </mat-form-field>
-    </div>
+                  <mat-form-field >
+                    <mat-label>Lugar instalacion</mat-label>
+                    <input matInput type="text" formControlName="lugarInstalacion" required>
+                  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Fecha de compra"  [(ngModel)]="equipo.fechacompra" style="display: inline; width: 300px">
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
+                    <mat-form-field>
+                    <input matInput [matDatepicker]="picker1"  formControlName="fechaCompra" placeholder="Fecha de compra"
+                           style="display: inline; width: 300px">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
 
-    <!--    <mat-form-field >-->
-<!--      <mat-label>Fecha compra</mat-label>-->
-<!--      <input matInput type="text" [(ngModel)]="equipo.fechacompra" required>-->
-<!--    </mat-form-field>-->
+            </div>
+  </div>
+<!-- Columna donde se colocara el ingreso de las imagens-->
+  <div  fxLayout="row" fxFlex="100" >
+        <div fxFlex="100" fxLayout="column">
 
     <mat-form-field >
-      <mat-label>Lugar instalado</mat-label>
-      <input matInput  type="text" [(ngModel)]="equipo.lugarInstalacion" required>
+      <mat-label>Modelo</mat-label>
+      <input matInput type="text" formControlName="ticketCompra" required>
     </mat-form-field>
 
-    <mat-form-field >
-      <mat-label>Url imagen</mat-label>
-      <input matInput type="url" [(ngModel)]="equipo.ticketcompra" disabled required>
-    </mat-form-field>
-
-
-    <br>
-    <!-- Botones  guardar/ eliminar  formulario -->
-    <div fxLayout="row">
-
-      <button mat-raised-button color="primary" (click)="guardar()">
-
-        <mat-icon>{{  ( equipo.id ) ? 'edit': 'save' }}</mat-icon>
-        <!--        -->
-
-      </button>
-      <span class="spacer"></span>
-
-      <button  mat-raised-button (click)="borrarEquipo( )"
-               [disabled]="!equipo.id"  color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-
-    </div>
-    <!-- FIN Botones  guardar/ eliminar  formulario -->
   </div>
-
-  <!--  En la siguiente columna se establecerá en ingreso de la imagen,
-  para ello obligaremos al usuario que arrestre su imagen sobre el
-  recuadro 'drop'-->
-
-  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column">
-
-    <!--    lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR -->
-    <div  *ngIf="equipo.id">
-      <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
-    </div>
-    <!-- FIN   lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR -->
-    <!--    En el siguiente div controlaremos carga  de los archivos,
-    en nuestro caso sera un imagen, 'drop'-->
-    <div *ngIf="!equipo.id" >
-      <div   fxLayout="row" fxLayoutGap="20px">
-        <div  fxLayout="column" fxLayoutGap="20px">
-          <h3>Seleccione archivos</h3>
-
-          <div appNgDropFiles *ngIf="archivos.length !== 1" [archivos]="archivos"
-               (mouseSobre) ="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento }"
-               class="drop-zone file-over">
-
-
-            <h4>Deje Caer aquí el archivo</h4>
-            <img class="imagen-carga" src="/assets/drop-images.png" alt="">
-
-          </div>
-          <div  *ngIf="archivos.length === 1">
-            <h1>Archivo cargado correctamente !!!</h1>
-            <img class="imagen-carga" [src]="" alt="">
-          </div>
-
-
-        </div >
-<!--         Tabla donde se verá  la carga de archivo-->
-<!--                  <div  fxFlex="55">-->
-<!--                      <h3>Carga de archivos</h3>-->
-
-<!--                    <table class="table">-->
-<!--                      <thead>-->
-<!--                      <tr>-->
-<!--                        <th>Nombre archivo</th>-->
-<!--                        <th>tamaño</th>-->
-<!--                        <th>Progreso</th>-->
-<!--                      </tr>-->
-<!--                      </thead>-->
-<!--                      <tbody>-->
-
-<!--&lt;!&ndash;                      <tr *ngFor="let fichero of archivos">&ndash;&gt;-->
-<!--                  <tr>-->
-<!--                        <td  [ngClass]="{ 'text-green': archivos[0].progreso>=100 }"-->
-<!--                          [(ngModel)]="archivos[0].nombreArchivo">-->
-
-<!--                          {{ archivos[0].nombreArchivo}}-->
-
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                          {{archivos[0].archivo.size / 1024/ 1024 | number: '.2-2'}} MB-->
-
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                          <div class="progress">-->
-
-<!--                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width':  archivos[0].progreso + '%'}" ></div>-->
-<!--                          </div>-->
-<!--                        </td>-->
-<!--                      </tr>-->
-<!--                      </tbody>-->
-
-<!--                    </table>-->
-
-
-<!--                </div>-->
       </div>
-      <!-- Fnm Tabla donde se verá  la carga de archivo -->
 
-      <!-- Linea botones controla zona drop-->
-      <!--      fxLayout="row" fxLayoutGap="20px"  estas dos propiedades hacen que tengn sus elementos
-       una separacion entre si de 20px -->
-      <div   fxLayout="row" fxLayoutGap="20px" >
+</form>
 
-        <button  mat-raised-button color="primary" (click)="cargaArchivo()" [disabled]="archivos.length === 0" >
-          <!--        <mat-icon>edit</mat-icon>-->
-          <mat-icon>file_upload</mat-icon>
-        </button>
-        <!--        <span class="spacer"> </span>-->
+<hr>
+<br>
 
-        <button
-          mat-raised-button
-          (click)="limpiarArchivo( )"
-          color="warn">
-          <mat-icon>cleaning_services</mat-icon>
-
-        </button>
-
-      </div>
-      <!-- Fin Linea botones controla zona drop-->
-    </div>
-
-
-  </div>
-
-
-
+<div class="m-t-10">
+  <h1>Form value: {{ fichaEquipo.value | json }}</h1>
 </div>
-
-
-
-<!--<h1>-->
-<!--&lt;!&ndash;    <span *ngIf="equipo.id">Editar</span>&ndash;&gt;-->
-<!--&lt;!&ndash;    <span *ngIf="!equipo.id">Nuevo</span>&ndash;&gt;-->
-<!--  {{  ( equipo.id ) ? 'Editar': 'Nuevo' }}-->
-<!-- equipo:-->
-<!--  <small> {{ equipo.id }}</small>-->
-<!--</h1>-->
-
-
-<!--<div  class="form"-->
-<!--      fxLayout="row"-->
-<!--     fxLayoutGap="40px"-->
-<!--     fxLayout.xs="column"  >-->
-
-<!--  <div    fxFlex="50" fxLayout="column">-->
-<!--    &lt;!&ndash; Primera linea del formulario-->
-<!--      fxLayout.xs="column" -> para pantallas pequeñas&ndash;&gt;-->
-<!--    <div fxLayout="row"-->
-<!--         fxLayout.xs="column"-->
-<!--         fxLayoutGap="20px">-->
-
-<!--      <mat-form-field fxFlex="100">-->
-<!--        <mat-label>Equipo</mat-label>-->
-<!--        <input matInput-->
-<!--               type="text"-->
-<!--               [(ngModel)]="equipo.equipo"-->
-<!--               required>-->
-<!--      </mat-form-field>-->
-
-<!--      <mat-form-field fxFlex="100">-->
-<!--        <mat-label>Modelo</mat-label>-->
-<!--        <input matInput-->
-<!--               type="text"-->
-<!--               [(ngModel)]="equipo.modelo"-->
-<!--               required>-->
-<!--      </mat-form-field>-->
-<!--    </div>-->
-
-<!--    <mat-form-field >-->
-<!--      <mat-label>Fecha compra</mat-label>-->
-<!--      <input matInput-->
-<!--             type="text"-->
-<!--             [(ngModel)]="equipo.fechacompra"-->
-<!--             required>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field >-->
-<!--      <mat-label>Lugar instalado</mat-label>-->
-<!--      <input matInput-->
-<!--             type="text"-->
-<!--             [(ngModel)]="equipo.lugarInstalacion"-->
-<!--             required>-->
-<!--    </mat-form-field>-->
-
-<!--    <mat-form-field >-->
-<!--      <mat-label>Url imagen</mat-label>-->
-<!--      <input matInput-->
-<!--             type="url"-->
-<!--             [(ngModel)]="equipo.ticketcompra"-->
-<!--             disabled-->
-<!--             required>-->
-
-<!--    </mat-form-field>-->
-
-
-<!--    <br>-->
-<!--&lt;!&ndash; Botones  guardar/ eliminar  formulario &ndash;&gt;-->
-<!--    <div fxLayout="row">-->
-
-<!--      <button mat-raised-button-->
-<!--              color="primary"-->
-<!--              (click)="guardar()"  >-->
-
-<!--        <mat-icon>{{  ( equipo.id ) ? 'edit': 'save' }}</mat-icon>-->
-<!--&lt;!&ndash;        &ndash;&gt;-->
-
-<!--      </button>-->
-<!--      <span class="spacer"></span>-->
-
-<!--      <button-->
-<!--              mat-raised-button-->
-<!--              (click)="borrarEquipo( )"-->
-<!--              [disabled]="!equipo.id"-->
-<!--              color="warn">-->
-<!--        <mat-icon>delete</mat-icon>-->
-<!--          a-->
-<!--      </button>-->
-
-<!--    </div>-->
-<!--    &lt;!&ndash; FIN Botones  guardar/ eliminar  formulario &ndash;&gt;-->
-<!--  </div>-->
-
-<!--&lt;!&ndash;  En la siguiente columna se establecerá en ingreso de la imagen,-->
-<!--para ello obligaremos al usuario que arrestre su imagen sobre el-->
-<!--recuadro 'drop'&ndash;&gt;-->
-
-<!--  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"    >-->
-
-<!--&lt;!&ndash;    lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR &ndash;&gt;-->
-<!--   <div  *ngIf="equipo.id">-->
-<!--     <img [src]="equipo | imagen"  alt="{{ equipo.id }}">-->
-<!--   </div>-->
-<!--    &lt;!&ndash; FIN   lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR &ndash;&gt;-->
-<!--&lt;!&ndash;    En el siguiente div controlaremos carga  de los archivos,-->
-<!--en nuestro caso sera un imagen, 'drop'&ndash;&gt;-->
-<!--    <div *ngIf="!equipo.id" >-->
-<!--      <div   fxLayout="row" fxLayoutGap="20px"  >-->
-<!--          <div  fxLayout="column" fxLayoutGap="20px">-->
-<!--            <h3>Seleccione archivos</h3>-->
-
-<!--            <div appNgDropFiles-->
-<!--                 *ngIf="archivos.length !== 1"-->
-<!--                    [archivos]="archivos"-->
-<!--                   (mouseSobre) ="estaSobreElemento = $event"-->
-<!--                   [ngClass]="{'file-over': estaSobreElemento }"-->
-<!--                  class="drop-zone file-over">-->
-
-
-<!--              <h4>Deje Caer aquí el archivo</h4>-->
-<!--              <img class="imagen-carga" src="/assets/drop-images.png" alt="">-->
-
-<!--            </div>-->
-<!--            <div  *ngIf="archivos.length === 1">-->
-<!--            <h1> archivo cargado correctamente !!!</h1>-->
-<!--            <img class="imagen-carga" src="" alt="">-->
-<!--            </div>-->
-
-
-<!--          </div >-->
-<!--     &lt;!&ndash; Tabla donde se verá  la carga de archivo &ndash;&gt;-->
-<!--&lt;!&ndash;          <div  fxFlex="55">&ndash;&gt;-->
-<!--&lt;!&ndash;              <h3>Carga de archivos</h3>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <table class="table">&ndash;&gt;-->
-<!--&lt;!&ndash;              <thead>&ndash;&gt;-->
-<!--&lt;!&ndash;              <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                <th>Nombre archivo</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                <th>tamaño</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                <th>Progreso</th>&ndash;&gt;-->
-<!--&lt;!&ndash;              </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;              </thead>&ndash;&gt;-->
-<!--&lt;!&ndash;              <tbody>&ndash;&gt;-->
-
-<!--&lt;!&ndash;              <tr *ngFor="let fichero of archivos">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                <td  [ngClass]="{ 'text-green': fichero.progreso>=100 }">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                  [(ngModel)]="equipo.ticketcompra">&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                  {{ fichero.nombreArchivo}}&ndash;&gt;-->
-
-<!--&lt;!&ndash;                </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB&ndash;&gt;-->
-
-<!--&lt;!&ndash;                </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <div class="progress">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width':  fichero.progreso + '%'}" ></div>&ndash;&gt;-->
-<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </td>&ndash;&gt;-->
-<!--&lt;!&ndash;              </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;              </tbody>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            </table>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--      </div>-->
-<!--      &lt;!&ndash; Fnm Tabla donde se verá  la carga de archivo &ndash;&gt;-->
-
-<!--      &lt;!&ndash; Linea botones controla zona drop&ndash;&gt;-->
-<!--&lt;!&ndash;      fxLayout="row" fxLayoutGap="20px"  estas dos propiedades hacen que tengn sus elementos-->
-<!-- una separacion entre si de 20px &ndash;&gt;-->
-<!--      <div   fxLayout="row" fxLayoutGap="20px" >-->
-
-<!--        <button-->
-<!--          mat-raised-button-->
-<!--          color="primary"-->
-<!--          (click)="cargaArchivo()" [disabled]="archivos.length === 0" >-->
-<!--          &lt;!&ndash;        <mat-icon>edit</mat-icon>&ndash;&gt;-->
-<!--          <mat-icon>file_upload</mat-icon>-->
-
-
-<!--        </button>-->
-<!--&lt;!&ndash;        <span class="spacer"> </span>&ndash;&gt;-->
-
-<!--        <button-->
-<!--          mat-raised-button-->
-<!--          (click)="limpiarArchivo( )"-->
-<!--          color="warn">-->
-<!--          <mat-icon>cleaning_services</mat-icon>-->
-
-<!--        </button>-->
-
-<!--      </div>-->
-<!--      &lt;!&ndash; Fin Linea botones controla zona drop&ndash;&gt;-->
-<!--    </div>-->
-
-
-<!--</div>-->
-
-
-
-<!--</div>-->
