@@ -4,8 +4,8 @@
 <div  >
 <div fxLayout="row">
 <!--  Columna formulario-->
-  <div  fxLayout="row" fxFlex="40" >
-           <div   fxFlex="60" fxLayout="column">
+  <div  fxLayout="row" fxFlex="40"  fxLayout.xs="column" >
+           <div   fxFlex="90" fxLayout="column"  fxLayout.xs="column">
 
                   <mat-form-field>
                     <mat-label>Equipo</mat-label>
@@ -32,24 +32,56 @@
             </div>
   </div>
 <!-- Columna donde se colocara el ingreso de las imagens-->
-  <div  fxLayout="row" fxFlex="100">
+  <div  fxLayout="row" fxFlex="100"  fxLayout.xs="column" >
          <div fxFlex="100" fxLayout="column">
 <!--        Solo se mostrará cuando editemos el objeto-->
 <!--           <div  *ngIf="fichaEquipo.value.id">-->
            <div *ngIf="fichaEquipo.id">
-             <h3>Documentos anexados:</h3>
-             <label *ngIf="fichaEquipo.ticketcompra.length === 0">
-                No se ha anexado ningun archivo
+             <h2>Documentos anexados:</h2>
+             <label>
+                No se ha anexado ningún archivo
              </label>
-<!--             <img [src]="fichaEquipo.value.ticketcompra[0] | imagen"  alt="{{ fichaEquipo.value.id }}">-->
-<!--             <img src="assets/drop-images.png" class="poster">-->
-             <label *ngIf="fichaEquipo.ticketcompra.length !== 0"> descripcion de los documentos anexados</label>
+
+             <label > descripcion de los documentos anexados</label>
            </div>
 
-<!--        Solo se mostrarña cuando queramos crear otro objeto   -->
-          <div *ngIf="!fichaEquipo.id">
-            <h3>Anexa imagen o pdf</h3>
-          </div>
+<!--   OBJETO NUEVO DROZONE   -->
+<!--          <div *ngIf="!fichaEquipo.id" class="dropzone" appDropfiles-->
+<!--                 (fileDropped)="onFileDropped($event)" >-->
+
+<!--            <h2>Anexa imagen o pdf</h2>-->
+<!--            <input class="inputDrop" type="file" #fileDropRef id="fileDropRef"-->
+<!--                   multiple (change)="fileBrowseHandler()"/>-->
+<!--&lt;!&ndash;            <img src="../../../../assets/img.png" alt="Deja caer tu archivo"/>&ndash;&gt;-->
+<!--            <h3 class="h3Drop">Arrastra tu archivo hasta este recuadro</h3>-->
+<!--            <h3 class="h3Drop">o</h3>-->
+<!--            <label class="labelDrop" for="fileDropRef">Selecciona tu archivo </label>-->
+<!--          </div>-->
+           <div *ngIf="!fichaEquipo.id">
+           <div  class="dropzone" appDropfiles (fileDropped)="onFileDropped($event)">
+             <input class="inputDrop" type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+             <img class="imagenesDrop" src="assets/imagenes/ic-upload-file.svg" alt="">
+             <h3 class="h3Drop">Drag and drop file here</h3>
+             <h3 class="h3Drop">or</h3>
+             <label class="labelDrop" for="fileDropRef">Browse for file</label>
+           </div>
+           <div class="files-list">
+             <div class="single-file" *ngFor="let file of files; let i = index">
+               <img class="imagenesDrop" src="assets/imagenes/ic-file.svg" width="45px" alt="file">
+               <div class="info">
+                 <h4 class="name">
+                   {{ file?.name }}
+                 </h4>
+                 <p class="size">
+                   {{ formatBytes(file?.size) }}
+                 </p>
+                 <app-progress [progress]="file?.progress"></app-progress>
+               </div>
+               <img  src="assets/imagenes/ic-delete-file.svg" class="delete" width="15px" height="15px" alt="file" (click)="deleteFile(i)">
+
+             </div>
+           </div>
+           </div>
 
 
           </div>
@@ -76,12 +108,4 @@
 
 
 </div>
-
-<hr>
-<br>
-
-<div class="m-t-10">
-  <h1>Form value: {{ fichaEquipo | json }}</h1>
-</div>
-
 
