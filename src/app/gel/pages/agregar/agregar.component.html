@@ -59,7 +59,7 @@
 <!--          </div>-->
            <div *ngIf="!fichaEquipo.id">
            <div  class="dropzone" appDropfiles (fileDropped)="onFileDropped($event)">
-             <input class="inputDrop" type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+             <input class="inputDrop" type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler( $event.target.files)" />
              <img class="imagenesDrop" src="assets/imagenes/ic-upload-file.svg" alt="">
              <h3 class="h3Drop">Drag and drop file here</h3>
              <h3 class="h3Drop">or</h3>

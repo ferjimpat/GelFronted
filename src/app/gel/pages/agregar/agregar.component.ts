@@ -155,13 +155,14 @@ export class AgregarComponent implements OnInit {
    */
   onFileDropped($event: any): void {
     this.prepareFilesList($event);
+
   }
 
   /**
    * handle file from browsing
    */
-  // tslint:disable-next-line:typedef
-  fileBrowseHandler(files: any) {
+
+  fileBrowseHandler(files: any): any {
     this.prepareFilesList(files);
   }
 

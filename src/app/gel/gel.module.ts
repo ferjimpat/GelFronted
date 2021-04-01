@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../material/material.module';
 
+
 import { GelRoutingModule } from './gel-routing.module';
 import { AgregarComponent } from './pages/agregar/agregar.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
