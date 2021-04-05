@@ -154,8 +154,10 @@ export class AgregarComponent implements OnInit {
    * on file drop handler
    */
   onFileDropped($event: any): void {
-    this.prepareFilesList($event);
-
+    // this.prepareFilesList($event);
+    for ( const  item of $event){
+      this.files.push(item);
+    }
   }
 
   /**
