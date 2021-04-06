@@ -1,10 +1,10 @@
 
 <h1>{{( fichaEquipo.id) ? 'Editar':'Nuevo'}} equipo: <small> {{ fichaEquipo.id }}</small></h1>
 
-<div  >
-<div fxLayout="row"  fxLayoutGap="20px" fxLayout.xs="column">
+<div>
+<div fxLayout="row"  fxLayoutGap="20px" fxLayout.xs="column" fxLayoutGap.xs="20px">
 <!--  Columna formulario-->
-  <div  fxLayout="column"  fxFlex="40"   >
+  <div  fxLayout="column"  fxFlex="40">
 <!--           <div   fxFlex="90" fxLayout="column"  fxLayout.xs="column">-->
 
                   <mat-form-field>
@@ -61,7 +61,7 @@
 
 <!--   OBJETO NUEVO DROZONE   -->
 
-           <div *ngIf="!fichaEquipo.id" >
+           <div *ngIf="!fichaEquipo.id"  fxLayout.xs="column" fxLayoutGap.xs="20px" >
            <div  class="dropzone" appDropfiles (fileDropped)="onFileDropped($event)"  >
 <!--             multiple (change)="fileBrowseHandler( $event.target.files)"-->
              <input class="inputDrop" type="file" #fileDropRef id="fileDropRef"  />
@@ -105,9 +105,9 @@
       <mat-icon>delete</mat-icon>
     </button>
 
-    <button mat-raised-button color="primary" (click)="LimpiarImagenes()">
-      <mat-icon>image</mat-icon>
-    </button>
+<!--    <button mat-raised-button color="primary" (click)="LimpiarImagenes()">-->
+<!--      <mat-icon>image</mat-icon>-->
+<!--    </button>-->
 
   </div>
 
