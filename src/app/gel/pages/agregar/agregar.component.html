@@ -61,7 +61,7 @@
 
 <!--   OBJETO NUEVO DROZONE   -->
 
-           <div *ngIf="!fichaEquipo.id"  fxLayout.xs="column" fxLayoutGap.xs="20px" >
+           <div *ngIf="!fichaEquipo.id"  fxLayout="column" fxLayoutGap="20px"  >
            <div  class="dropzone" appDropfiles (fileDropped)="onFileDropped($event)"  >
 <!--             multiple (change)="fileBrowseHandler( $event.target.files)"-->
              <input class="inputDrop" type="file" #fileDropRef id="fileDropRef"  />
