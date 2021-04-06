@@ -21,3 +21,10 @@ export interface Bd {
   usuarios: Usuario[];
   equipos: Equiposgel[];
 }
+
+// export interface FileItem {
+//   lastModified: number;
+//   name: string;
+//   size: number;
+//   type: string;
+// }

@@ -2,9 +2,9 @@
 <h1>{{( fichaEquipo.id) ? 'Editar':'Nuevo'}} equipo: <small> {{ fichaEquipo.id }}</small></h1>
 
 <div  >
-<div fxLayout="row" fxLayout.xs="column">
+<div fxLayout="row"  fxLayoutGap="20px" fxLayout.xs="column">
 <!--  Columna formulario-->
-  <div  fxLayout="column" fxFlex="40"   >
+  <div  fxLayout="column"  fxFlex="40"   >
 <!--           <div   fxFlex="90" fxLayout="column"  fxLayout.xs="column">-->
 
                   <mat-form-field>
@@ -38,11 +38,17 @@
 <!--           <div  *ngIf="fichaEquipo.value.id">-->
            <div *ngIf="fichaEquipo.id">
              <h2>Documentos anexados:</h2>
-             <label>
+             <label *ngIf="fichaEquipo.ticketcompra.length === 0">
                 No se ha anexado ningún archivo
-             </label>
 
-             <label > descripcion de los documentos anexados</label>
+             </label>
+            <p  *ngFor="let a of fichaEquipo.ticketcompra">
+              <label>
+                {{ a }}
+              </label>
+            </p>
+
+
            </div>
 
 <!--   OBJETO NUEVO DROZONE   -->
@@ -56,7 +62,7 @@
              <h3 class="h3Drop">or</h3>
              <label class="labelDrop" for="fileDropRef">Browse for file</label>
            </div>
-           <div class="files-list ">
+           <div class="files-list" >
              <div class="single-file" *ngFor="let file of files; let i = index">
                <img class="imagenesDrop" src="assets/imagenes/ic-file.svg" width="45px" alt="file">
                <div class="info">

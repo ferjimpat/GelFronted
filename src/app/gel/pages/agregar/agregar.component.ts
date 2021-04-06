@@ -11,6 +11,7 @@ import {GelService} from '../../services/gel.service';
 import {CargaImagenesService} from '../../services/carga-imagenes.service';
 import {FormBuilder} from '@angular/forms';
 import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
+import {FileItem} from '../../models/file-item';
 
 
 
@@ -153,10 +154,13 @@ export class AgregarComponent implements OnInit {
   /**
    * on file drop handler
    */
-  onFileDropped($event: any): void {
+  onFileDropped($event: File): any {
     // this.prepareFilesList($event);
+    // @ts-ignore
     for ( const  item of $event){
       this.files.push(item);
+      this.fichaEquipo.ticketcompra?.push(item.name);
+      console.log('item', item.name );
     }
   }
 
