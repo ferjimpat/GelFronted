@@ -9,23 +9,31 @@
 
                   <mat-form-field>
                     <mat-label>Equipo</mat-label>
-                    <input matInput type="text"  [(ngModel)]="fichaEquipo.equipo" required>
+                    <label>
+                      <input matInput type="text"  [(ngModel)]="fichaEquipo.equipo" required>
+                    </label>
                   </mat-form-field>
 
                   <mat-form-field >
                     <mat-label>Modelo</mat-label>
-                    <input matInput type="text" [(ngModel)]="fichaEquipo.modelo"  required>
+                    <label>
+                      <input matInput type="text" [(ngModel)]="fichaEquipo.modelo"  required>
+                    </label>
                   </mat-form-field>
 
                   <mat-form-field >
                     <mat-label>Lugar instalacion</mat-label>
-                    <input matInput type="text" [(ngModel)]="fichaEquipo.lugarInstalacion"  required>
+                    <label>
+                      <input matInput type="text" [(ngModel)]="fichaEquipo.lugarInstalacion"  required>
+                    </label>
                   </mat-form-field>
 
                     <mat-form-field>
-                            <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
-                           style="display: inline; width: 100px" required>
-                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <label>
+                        <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
+                       style="display: inline; width: 100px" required>
+                      </label>
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                              <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
 

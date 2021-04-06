@@ -1,6 +1,5 @@
 import {Directive,
   Output,
-  Input,
   EventEmitter,
   HostBinding,
   HostListener} from '@angular/core';
@@ -21,7 +20,7 @@ export class DropfilesDirective {
   }
 
   // Dragleave listener
-  @HostListener('dragleave', ['$event']) public onDragLeave(evt: any ):void {
+  @HostListener('dragleave', ['$event']) public onDragLeave(evt: any ): void {
     evt.preventDefault();
     evt.stopPropagation();
     this.fileOver = false;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +22,7 @@ export class RegistroComponent  {
   constructor( private fb: FormBuilder,
                private router: Router ) { }
 
-  registro() {
+  registro(): void {
 
     console.log( this.miFormulario.value);
     // console.log( this.miFormulario.valid);

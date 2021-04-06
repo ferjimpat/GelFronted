@@ -21,12 +21,12 @@ export class EquipoComponent  implements OnInit{
 
   // con el el signo '!', le indico a TS que confie en que llegará info
   equipo!: Equiposgel;
-  id: string = '';
+  id = '';
 
   /*leemos nuestra Url, utilizando ActivateRoute */
       constructor(private activateRoute: ActivatedRoute,
-                  private router       : Router,
-                  private gelServices  : GelService) {  }
+                  private router: Router,
+                  private gelServices: GelService) {  }
 
   ngOnInit(): void {
 
@@ -41,7 +41,7 @@ export class EquipoComponent  implements OnInit{
   }
 
 
-  regresar() {
+  regresar(): void {
     this.router.navigate(['/equipos/listado']);
   }
 }

@@ -25,7 +25,7 @@ export class LoginComponent  {
 
 
 
-  login(){
+  login(): void{
     // ir al backend y verificar que el usuario existe
     this.authService.login()
       .subscribe( resp => {

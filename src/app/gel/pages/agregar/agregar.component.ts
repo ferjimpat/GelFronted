@@ -11,7 +11,7 @@ import {GelService} from '../../services/gel.service';
 import {CargaImagenesService} from '../../services/carga-imagenes.service';
 import {FormBuilder} from '@angular/forms';
 import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
-import {FileItem} from '../../models/file-item';
+
 
 
 
@@ -33,7 +33,7 @@ export class AgregarComponent implements OnInit {
   files: any[] = [];
 
   // crearemos una bandera q nos identifique cuando el mouse este sobre la zona
-  estaSobreElemento = false  ;
+  // estaSobreElemento = false  ;
   // archivos: FileItem[] = [] ;
 
   // fichaEquipo = this.fb.group( {
@@ -168,9 +168,9 @@ export class AgregarComponent implements OnInit {
    * handle file from browsing
    */
 
-  fileBrowseHandler(files: any): any {
-    this.prepareFilesList(files);
-  }
+  // fileBrowseHandler(files: any): any {
+  //   this.prepareFilesList(files);
+  // }
 
   /**
    * Delete file from files list
@@ -208,14 +208,14 @@ export class AgregarComponent implements OnInit {
    * Convert Files list to normal array list
    * @param files (Files List)
    */
-  prepareFilesList(files: Array<any>): void {
-    for (const item of files) {
-      item.progress = 0;
-      this.files.push(item);
-    }
-    this.fileDropEl.nativeElement.value = '';
-    this.uploadFilesSimulator(0);
-  }
+  // prepareFilesList(files: Array<any>): void {
+  //   for (const item of files) {
+  //     item.progress = 0;
+  //     this.files.push(item);
+  //   }
+  //   this.fileDropEl.nativeElement.value = '';
+  //   this.uploadFilesSimulator(0);
+  // }
 
   /**
    * format bytes

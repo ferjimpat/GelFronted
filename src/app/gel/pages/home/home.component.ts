@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../auth/services/auth.service';
-import {AuthResponse} from '../../../auth/interfaces/interfaces';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent  implements OnInit{
 
 
 
-  get auth(){
+  get auth(): any {
     return this.authservice.auth;
   }
 
@@ -24,7 +24,7 @@ export class HomeComponent  implements OnInit{
   ngOnInit(): void {
   }
 
-  logOut() {
+  logOut(): any {
     // ir al backend y verificar que el usuario existe
     this.authservice.logout();
     this.router.navigate( ['./auth/login']);

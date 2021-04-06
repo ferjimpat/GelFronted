@@ -12,10 +12,12 @@ export class AuthService {
 
 
   private baseURl: string = environment.basdeURL;
+  // tslint:disable-next-line:variable-name
   private _auth: AuthResponse | undefined; // como esta privado haremos un getter
   /*lo Hemos desestructurado para evitar que accidentalmente se transforme
   * el valor */
   get auth(): AuthResponse {
+    // tslint:disable-next-line:no-non-null-assertion
     return { ...this._auth! }; // como estamos en el modo estricto de angular
                               // hay que decir que siempre tendrá un valor
   }
@@ -46,7 +48,7 @@ export class AuthService {
    * y por jerarquia cuando utilicemos la función get.... se ejecutara primeramente
    * el pipe(tap) , luego el subscribe donde se implemente */
 
-  login(){
+  login(): any {
       return  this.http.get<AuthResponse>(`${ this.baseURl }/usuarios/1`)
         .pipe(
           tap( auth => this._auth = auth),
@@ -56,7 +58,7 @@ export class AuthService {
 
   /*el operador tap, se ejecutara ante del subscribe en el parte del login.ts*/
 
-  logout() {
+  logout(): any {
     localStorage.clear();
   }
 
