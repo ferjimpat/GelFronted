@@ -22,7 +22,7 @@ export class FileItem implements Equiposgel {
   fechacompra = new Date();
   lugarInstalacion = '';
   modelo = '';
-
+  ticketcompra = [];
   // equipo: string;
   // fechacompra: string;
   // id: string;

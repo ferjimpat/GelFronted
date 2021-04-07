@@ -51,8 +51,11 @@ export class AgregarComponent implements OnInit {
   modelo:      '',
   lugarInstalacion: '',
   fechacompra: new Date(),
-  ticketcompra: [],
+  ticketcompra: [] ,
 };
+
+
+
 
   constructor( private fb: FormBuilder,
                private gelServicio: GelService,
@@ -78,7 +81,7 @@ export class AgregarComponent implements OnInit {
 
     // como this.equipo esta asociado a los campos mediante el [ (ngModel)], se autorellenara
     // los campos
-
+    // this.archivosAnexados = this.fichaEquipo.ticketcompra?.length;
   }
 
 

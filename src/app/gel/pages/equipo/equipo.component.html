@@ -16,13 +16,6 @@
        fxLayout.xs="column"
        fxLayoutGap="30px" >
 
-    <div fxFlex="50">
-      <h1>{{ equipo.id}} <small> {{equipo.equipo}}</small></h1>
-      <mat-divider></mat-divider>
-      <br>
-      <img [src]="equipo | imagen" alt="{{ equipo.equipo }}">
-
-    </div>
 
     <div fxFlex="50">
       <h3> ID equipo: {{ equipo.id }}</h3>
@@ -44,6 +37,20 @@
       </button>
 
     </div>
+
+    <div fxFlex="50">
+      <h3> Cantidad de documentos anexados: <mark> {{ equipo.ticketcompra.length! }} </mark> </h3>
+      <mat-divider></mat-divider>
+      <br>
+      <p  *ngFor="let a of equipo.ticketcompra">
+        <label>
+          {{ a }}
+        </label>
+      </p>
+<!--      <p *ngIf="equipo.ticketcompra.length > 0"> No hay documentos anexados</p>-->
+
+    </div>
+
 
   </div>
 </ng-template>

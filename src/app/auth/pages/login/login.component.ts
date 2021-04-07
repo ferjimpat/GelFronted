@@ -25,10 +25,10 @@ export class LoginComponent  {
 
 
 
-  login(): void{
+  login(): any {
     // ir al backend y verificar que el usuario existe
     this.authService.login()
-      .subscribe( resp => {
+      .subscribe( (resp: any) => {
         console.log( resp);
 
         if ( resp.id){

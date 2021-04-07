@@ -1,4 +1,4 @@
-import {FileItem} from '../models/file-item';
+
 
 export interface Equiposgel {
   id?: string;
@@ -6,9 +6,9 @@ export interface Equiposgel {
   modelo: string;
   lugarInstalacion: string;
   fechacompra: Date;
-  ticketcompra?: FileItem[]; // http:// ... direccion .. .com/img.png [] strinh
+  ticketcompra: string[];
 }
-
+// http:// ... direccion .. .com/img.png [] string
 export interface Usuario {
   id: number;
   usuario: string;

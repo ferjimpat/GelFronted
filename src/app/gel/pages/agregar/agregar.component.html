@@ -43,13 +43,13 @@
   <div  fxLayout="column" fxFlex="60"  fxLayout.xs="column" >
          <div >
 <!--        Solo se mostrará cuando editemos el objeto-->
-<!--           <div  *ngIf="fichaEquipo.value.id">-->
+
            <div *ngIf="fichaEquipo.id">
              <h2>Documentos anexados:</h2>
-             <label *ngIf="fichaEquipo.ticketcompra.length === 0">
-                No se ha anexado ningún archivo
+<!--             <label *ngIf=" ">-->
+<!--                No se ha anexado ningún archivo-->
 
-             </label>
+<!--             </label>-->
             <p  *ngFor="let a of fichaEquipo.ticketcompra">
               <label>
                 {{ a }}
