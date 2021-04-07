@@ -46,10 +46,10 @@
 
            <div *ngIf="fichaEquipo.id">
              <h2>Documentos anexados:</h2>
-<!--             <label *ngIf=" ">-->
-<!--                No se ha anexado ningún archivo-->
+             <label *ngIf="fichaEquipo.ticketcompra.length === 0 ">
+                No se ha anexado ningún archivo
 
-<!--             </label>-->
+             </label>
             <p  *ngFor="let a of fichaEquipo.ticketcompra">
               <label>
                 {{ a }}
