@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Equiposgel} from '../interfaces/equipogel.interface';
 import {environment} from '../../../environments/environment';
@@ -14,9 +14,12 @@ export class GelService {
 
   constructor( private http: HttpClient ) { }
 
+/*pasar en un archivo json campo idcliente= idCliente (Api)*/
+  public  getEquipos( id: any ): any {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const json = JSON.stringify({ idCliente: id } );
 
-  public  getEquipos(): Observable<Equiposgel[]> {
-    return this.http.get<Equiposgel[]>( `${this.baseUrl}/equipos`);
+    return this.http.post<any>( environment.basdeURL + 'dispositivos', json, { headers });
   }
 
   /* vamos a realizar busqueda similares a nuestro termino, limitandolo

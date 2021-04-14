@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HidrogelPageComponent} from './shared/hidrogel-page/hidrogel-page.component';
-import {AuthGuardGuard} from './auth/guards/auth-guard.guard';
+import {AuthGuard} from './services/auth.guard';
+
 
 
 /* Aqui empezamos la base del árbol.....
@@ -16,8 +17,7 @@ const routes: Routes = [
   {
     path: 'equipos',
     loadChildren: () => import('./gel/gel.module').then( m => m.GelModule),
-    canLoad: [ AuthGuardGuard ],
-    canActivate: [ AuthGuardGuard  ]
+    canActivate: [ AuthGuard  ]
   },
 {
   path: '404',

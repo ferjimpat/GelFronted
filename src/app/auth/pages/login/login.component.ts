@@ -13,26 +13,35 @@ export class LoginComponent  {
 
   // le damos valores por defecto para evitar asi estar tecleando a cada prueba
   miFormulario: FormGroup = this.fb.group({
-  email: ['pepito@gmail.com', [ Validators.required, Validators.email]],
-  password: ['123456', [ Validators.required, Validators.minLength(6)]],
+  email: ['', [ Validators.required, Validators.email]],
+  password: ['', [ Validators.required, Validators.minLength(6)]],
   });
 
 
   constructor( private fb: FormBuilder,
                private router: Router,
-               private authService: AuthService ) { }
+               private authService: AuthService  ) {
+    window.sessionStorage.removeItem('token');
+  }
 
 
 
 
   login(): any {
+
+    console.log(this.miFormulario.value.email, this.miFormulario.value.password);
     // ir al backend y verificar que el usuario existe
-    this.authService.login()
+    this.authService.login( this.miFormulario.value.email, this.miFormulario.value.password)
       .subscribe( (resp: any) => {
         console.log( resp);
+        const id = resp.cliente.id;
 
-        if ( resp.id){
-          this.router.navigate(['./equipos']);
+        console.log(id);
+        if ( resp.token ){
+          window.sessionStorage.setItem( 'token', resp.token );
+          this.router.navigate(['equipos/listado/', id]);
+        }else{
+
         }
 
       } );

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  basdeURL: 'http://localhost:3000'
+  basdeURL: 'https://api.vibacoff.com/api/'
 };
 
 /*

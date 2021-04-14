@@ -13,9 +13,9 @@ export class HomeComponent  implements OnInit{
 
 
 
-  get auth(): any {
-    return this.authservice.auth;
-  }
+  // get auth(): any {
+  //   return this.authservice.auth;
+  // }
 
 
   constructor( private  router: Router,

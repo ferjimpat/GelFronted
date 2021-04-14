@@ -6,13 +6,16 @@ import {AgregarComponent} from './pages/agregar/agregar.component';
 import {BuscarComponent} from './pages/buscar/buscar.component';
 import {EquipoComponent} from './pages/equipo/equipo.component';
 
+
+
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+
     children: [
       {
-        path: 'listado',
+        path: 'listado/:id',
         component: ListadoComponent
       },
       {
@@ -33,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'listado'
+        redirectTo: 'listado/'
       },
 
     ]

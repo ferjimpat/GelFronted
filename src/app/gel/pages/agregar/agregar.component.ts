@@ -91,6 +91,7 @@ export class AgregarComponent implements OnInit {
     if ( this.fichaEquipo.equipo.trim().length === 0 ||
       this.fichaEquipo.modelo.trim().length === 0 ||
       this.fichaEquipo.lugarInstalacion.trim().length === 0){
+
       // añadir un mesaje emergente para indicar que rellene todos los campos
       this.mostrarSnabar('Rellena todos los campos');
       return;   }
