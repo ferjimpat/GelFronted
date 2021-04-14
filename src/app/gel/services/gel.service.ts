@@ -19,7 +19,7 @@ export class GelService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const json = JSON.stringify({ idCliente: id } );
 
-    return this.http.post<any>( environment.basdeURL + 'dispositivos', json, { headers });
+    return this.http.post<Equiposgel>( environment.basdeURL + 'dispositivos', json, { headers });
   }
 
   /* vamos a realizar busqueda similares a nuestro termino, limitandolo

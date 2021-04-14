@@ -42,7 +42,7 @@ export class BuscarComponent implements OnInit {
     }
 
     const  equipo: Equiposgel = event.option.value;
-    this.termino = equipo.modelo;
+    // this.termino = equipo.modelo;
 
     // tslint:disable-next-line:no-non-null-assertion
     this.gelService.getEquipoPorId( equipo.id!)

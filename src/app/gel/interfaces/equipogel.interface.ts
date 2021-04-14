@@ -1,12 +1,13 @@
 
 
 export interface Equiposgel {
+
   id?: string;
-  equipo: string;
-  modelo: string;
-  lugarInstalacion: string;
-  fechacompra: Date;
-  ticketcompra: string[];
+  serial: string;
+  fechaCompra: Date;
+  factura: string;
+  lugarInstalacion?: string;
+  ticketcompra?: string[];
 }
 // http:// ... direccion .. .com/img.png [] string
 export interface Usuario {

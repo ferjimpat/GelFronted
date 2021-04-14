@@ -25,7 +25,7 @@ id: any;
    this.cargando = true;
   }
   getEquipos(): void {
-    this.gelService.getEquipos(this.id  )
+    this.gelService.getEquipos( this.id  )
       .subscribe( (resp: any ) => {
         this.equipos = resp;
         this.cargando = false;

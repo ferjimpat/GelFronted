@@ -10,7 +10,7 @@
                   <mat-form-field>
                     <mat-label>Equipo</mat-label>
                     <label>
-                      <input matInput type="text"  [(ngModel)]="fichaEquipo.equipo" required>
+                      <input matInput type="text"  [(ngModel)]="fichaEquipo.serial" required>
                     </label>
                   </mat-form-field>
 
@@ -30,7 +30,7 @@
 
                     <mat-form-field>
                       <label>
-                        <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechacompra"  placeholder="Fecha de compra"
+                        <input matInput [matDatepicker]="picker1"  [(ngModel)]="fichaEquipo.fechaCompra"  placeholder="Fecha de compra"
                        style="display: inline; width: 100px" required>
                       </label>
                       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>

@@ -15,7 +15,7 @@ const routes: Routes = [
 
     children: [
       {
-        path: 'listado/:id',
+        path: 'listado/',
         component: ListadoComponent
       },
       {

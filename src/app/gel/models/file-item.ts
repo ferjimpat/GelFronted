@@ -18,16 +18,13 @@ export class FileItem implements Equiposgel {
     this.progreso = 0;
   }
 
-  equipo = '';
-  fechacompra = new Date();
+  fechaCompra = new Date();
   lugarInstalacion = '';
-  modelo = '';
   ticketcompra = [];
-  // equipo: string;
-  // fechacompra: string;
-  // id: string;
-  // lugarInstalacion: string;
-  // modelo: string;
-  // ticketcompra: string;
+  id = ' ';
+  serial = '';
+
+  factura = '';
+
 
 }

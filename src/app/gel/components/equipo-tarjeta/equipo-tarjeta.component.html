@@ -6,10 +6,10 @@
   </mat-card-header>
 
 <!--  <img mat-card-image src="assets/{{equipo.ticketcompra}}.jpg ">-->
-  <img class="poster" mat-card-image [src] =" equipo | imagen " alt="{{ equipo.equipo }}">
+  <img class="poster" mat-card-image [src] =" equipo | imagen " alt="{{ equipo.ticketcompra }}">
 
   <mat-card-content>
-    <h3>Nombre equipo:   {{ equipo.equipo }}</h3>
+    <h3>Nombre equipo:   {{ equipo.serial }}</h3>
   </mat-card-content>
   <!-- Espacio reservado para botones -->
   <mat-card-actions align="start"

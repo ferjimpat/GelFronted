@@ -47,12 +47,13 @@ export class AgregarComponent implements OnInit {
 
 
   fichaEquipo: Equiposgel = {
-  equipo:      '',
-  modelo:      '',
+    factura: '',
+    id: '',
+    serial: '',
   lugarInstalacion: '',
-  fechacompra: new Date(),
-  ticketcompra: [] ,
-};
+  fechaCompra: new Date(),
+  ticketcompra: []
+  };
 
 
 
@@ -88,10 +89,9 @@ export class AgregarComponent implements OnInit {
 
 
   guardar(): any {
-    if ( this.fichaEquipo.equipo.trim().length === 0 ||
-      this.fichaEquipo.modelo.trim().length === 0 ||
-      this.fichaEquipo.lugarInstalacion.trim().length === 0){
-
+    if ( this.fichaEquipo.serial.trim().length === 0 ||
+      this.fichaEquipo.fechaCompra.getDate().toString() !== ''){
+      // this.fichaEquipo.lugarInstalacion.trim().length === 0
       // añadir un mesaje emergente para indicar que rellene todos los campos
       this.mostrarSnabar('Rellena todos los campos');
       return;   }

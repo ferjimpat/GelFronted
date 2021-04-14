@@ -26,10 +26,9 @@ export class EquipoComponent  implements OnInit{
 
   // @ts-ignore
   equipo: Equiposgel = {
-    equipo:      '',
-    modelo:      '',
+
     lugarInstalacion: '',
-    fechacompra: new Date(),
+    fechaCompra: new Date(),
     ticketcompra: [] ,
   };
 
