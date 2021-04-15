@@ -20,7 +20,7 @@ export class ListadoComponent implements OnInit {
 
   constructor( private gelService: GelService,
                private route: ActivatedRoute) {
-    this.id = this.route.snapshot.paramMap.get('id');
+    // this.id = this.route.snapshot.paramMap.get('id');
     this.id = 1;
   }
 

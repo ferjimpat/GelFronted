@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {Usuario} from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +18,14 @@ export class LoginComponent  {
   password: ['password', [ Validators.required, Validators.minLength(6)]],
   });
 
+  usuario: Usuario[] = [];
 
 
   constructor( private fb: FormBuilder,
                private router: Router,
                private authService: AuthService  ) {
-    window.sessionStorage.removeItem('token');
+            window.sessionStorage.removeItem('token');
   }
-
-
 
 
   login(): any {
@@ -35,12 +35,16 @@ export class LoginComponent  {
     this.authService.login( this.miFormulario.value.email, this.miFormulario.value.password)
       .subscribe( (resp: any) => {
         console.log('respesta login:', resp);
-        const id = resp.cliente.id;
+        // const id = resp.cliente.id;
+        const { id, nombre, apellidos } = resp.cliente;
+        this.usuario.push(resp.cliente);
+        console.log('cliente []', this.usuario);
+        console.log('cliente', nombre , apellidos , id);
 
-        console.log(id);
         if ( resp.token ){
           window.sessionStorage.setItem( 'token', resp.token );
-          this.router.navigate(['equipos/listado', id]);
+          this.router.navigate(['equipos/listado']);
+          // TENGO QUE PASAR MI OBJETO
         }else{
 
         }
@@ -49,5 +53,7 @@ export class LoginComponent  {
 
 
   }
+
+
 
 }

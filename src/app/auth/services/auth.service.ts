@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AuthService {
 
+ total: any[] = [];
 
   private baseURl: string = environment.basdeURL;
   // tslint:disable-next-line:variable-name
@@ -64,7 +65,8 @@ export class AuthService {
   login(e: string, p: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const json = JSON.stringify({username: e, password: p});
-    return this.http.post(environment.basdeURL + 'users/login_check', json, {headers} );
+    return this.http.post(this.baseURl + 'users/login_check', json, {headers} );
+
   }
   getToken(): any {
     return window.sessionStorage.getItem('token');

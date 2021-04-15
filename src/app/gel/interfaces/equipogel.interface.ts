@@ -10,16 +10,10 @@ export interface Equiposgel {
 
 }
 // http:// ... direccion .. .com/img.png [] string
-export interface Usuario {
-  id: number;
-  usuario: string;
-  email: string;
-
-}
 
 
 export interface Bd {
-  usuarios: Usuario[];
+
   equipos: Equiposgel[];
 }
 
