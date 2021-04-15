@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 
 import {ActivatedRoute, Router} from '@angular/router';
+import {Usuario} from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
- total: any[] = [];
+
 
   private baseURl: string = environment.basdeURL;
   // tslint:disable-next-line:variable-name
@@ -68,6 +69,8 @@ export class AuthService {
     return this.http.post(this.baseURl + 'users/login_check', json, {headers} );
 
   }
+
+
   getToken(): any {
     return window.sessionStorage.getItem('token');
   }
