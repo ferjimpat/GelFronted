@@ -15,9 +15,13 @@ export class ListadoComponent implements OnInit {
   cargando = false;
   id: any;
 
+  /*HISTORIA D ELA PELICULA SE ACABO EL RECIBIR EL ID DEL USUAIRO POR URL Asi QUE BUSCATE LA VIDA Y GESTIONA
+  * UN INPUT Y TRAETE EL OBJETO USUARIO CON SUS DISPOSITIVOS .....*/
+
   constructor( private gelService: GelService,
                private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.id = 1;
   }
 
   ngOnInit(): void {
@@ -29,7 +33,7 @@ export class ListadoComponent implements OnInit {
       .subscribe( (resp: any ) => {
         this.equipos = resp;
         this.cargando = false;
-        console.log( this.equipos );
+        console.log('listado equipos', this.equipos );
       });
   }
 
