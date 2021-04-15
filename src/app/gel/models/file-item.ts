@@ -23,7 +23,6 @@ export class FileItem implements Equiposgel {
   ticketcompra = [];
   id = ' ';
   serial = '';
-
   factura = '';
 
 

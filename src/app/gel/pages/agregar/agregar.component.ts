@@ -9,8 +9,9 @@ import {GelService} from '../../services/gel.service';
 
 
 import {CargaImagenesService} from '../../services/carga-imagenes.service';
-import {FormBuilder} from '@angular/forms';
+
 import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
+import {FileItem} from '../../models/file-item';
 
 
 
@@ -33,8 +34,8 @@ export class AgregarComponent implements OnInit {
   files: any[] = [];
 
   // crearemos una bandera q nos identifique cuando el mouse este sobre la zona
-  // estaSobreElemento = false  ;
-  // archivos: FileItem[] = [] ;
+  estaSobreElemento = false  ;
+  archivos: FileItem[] = [] ;
 
   // fichaEquipo = this.fb.group( {
   //   id: [''],
@@ -52,14 +53,13 @@ export class AgregarComponent implements OnInit {
     serial: '',
   lugarInstalacion: '',
   fechaCompra: new Date(),
-  ticketcompra: []
+  // ticketcompra: []
   };
 
 
 
 
-  constructor( private fb: FormBuilder,
-               private gelServicio: GelService,
+  constructor( private gelServicio: GelService,
                private activateRoute: ActivatedRoute,
                private cargaImagenesService: CargaImagenesService,
                private router: Router,
@@ -142,8 +142,8 @@ export class AgregarComponent implements OnInit {
   }
 
   LimpiarImagenes(): void {
-    this.fichaEquipo.ticketcompra = [ ];
-    console.log('Arraylist vacío: ' + this.fichaEquipo.ticketcompra.length);
+    // this.fichaEquipo.ticketcompra = [ ];
+    // console.log('Arraylist vacío: ' + this.fichaEquipo.ticketcompra.length);
   }
 
   private mostrarSnabar( mensaje: string): void {
@@ -163,7 +163,7 @@ export class AgregarComponent implements OnInit {
     // @ts-ignore
     for ( const  item of $event){
       this.files.push(item);
-      this.fichaEquipo.ticketcompra?.push(item.name);
+      // this.fichaEquipo.ticketcompra?.push(item.name);
       console.log('item', item.name );
     }
   }

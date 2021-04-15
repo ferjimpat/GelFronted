@@ -15,7 +15,7 @@ const routes: Routes = [
 
     children: [
       {
-        path: 'listado/',
+        path: 'listado',
         component: ListadoComponent
       },
       {
@@ -23,7 +23,7 @@ const routes: Routes = [
         component: AgregarComponent
       },
       {
-        path: 'editar/:id',
+        path: 'editar',
         component: AgregarComponent
       },
       {
@@ -36,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'listado/'
+        redirectTo: 'listado'
       },
 
     ]

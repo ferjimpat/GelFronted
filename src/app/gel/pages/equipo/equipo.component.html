@@ -22,9 +22,9 @@
       <mat-divider></mat-divider>
       <br>
       <mat-list>
-        <mat-list-item>Nombre:            {{ equipo.equipo}}</mat-list-item>
-        <mat-list-item>Modelo:            {{ equipo.modelo}}</mat-list-item>
-        <mat-list-item>Fecha compra:      {{ equipo.fechacompra | date }}</mat-list-item>
+        <mat-list-item>Nombre:            {{ equipo.serial}}</mat-list-item>
+        <mat-list-item>Fecha compra:      {{ equipo.fechaCompra  }}</mat-list-item>
+<!--        <mat-list-item>Fecha compra:      {{ equipo.fechaCompra | date }}</mat-list-item>-->
         <mat-list-item>Lugar instalación: {{ equipo.lugarInstalacion}}</mat-list-item>
       </mat-list>
 
@@ -39,15 +39,11 @@
     </div>
 
     <div fxFlex="50">
-      <h3> Cantidad de documentos anexados: <mark> {{ equipo.ticketcompra.length! }} </mark> </h3>
+      <h3> Cantidad de documentos anexados: <mark> equipo.ticketcompra.length! </mark> </h3>
       <mat-divider></mat-divider>
       <br>
-      <p  *ngFor="let a of equipo.ticketcompra">
-        <label>
-          {{ a }}
-        </label>
-      </p>
-      <p *ngIf="equipo.ticketcompra.length === 0"> No hay documentos anexados</p>
+      <p> documenti anexadfo</p>
+
 
     </div>
 

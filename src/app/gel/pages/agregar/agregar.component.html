@@ -10,16 +10,11 @@
                   <mat-form-field>
                     <mat-label>Equipo</mat-label>
                     <label>
-                      <input matInput type="text"  [(ngModel)]="fichaEquipo.serial" required>
+                      <input matInput type="text"  [(ngModel)] ="fichaEquipo.serial" required>
                     </label>
                   </mat-form-field>
 
-                  <mat-form-field >
-                    <mat-label>Modelo</mat-label>
-                    <label>
-                      <input matInput type="text" [(ngModel)]="fichaEquipo.modelo"  required>
-                    </label>
-                  </mat-form-field>
+
 
                   <mat-form-field >
                     <mat-label>Lugar instalacion</mat-label>
@@ -46,23 +41,24 @@
 
            <div *ngIf="fichaEquipo.id">
              <h2>Documentos anexados:</h2>
-             <label *ngIf="fichaEquipo.ticketcompra.length === 0 ">
+<!--             <label *ngIf="fichaEquipo.ticketcompra.length === 0 ">-->
                 No se ha anexado ningún archivo
 
-             </label>
-            <p  *ngFor="let a of fichaEquipo.ticketcompra">
-              <label>
-                {{ a }}
-              </label>
-            </p>
+<!--             </label>-->
+<!--            <p  *ngFor="let a of fichaEquipo.ticketcompra">-->
+<!--              <label>-->
+<!--                {{ a }}-->
+<!--              </label>-->
+<!--            </p>-->
 
+<p> d'factura</p>
 
            </div>
 
 <!--   OBJETO NUEVO DROZONE   -->
 
            <div *ngIf="!fichaEquipo.id"  fxLayout="column" fxLayoutGap="20px"  >
-           <div  class="dropzone" appDropfiles (fileDropped)="onFileDropped($event)"  >
+           <div  *ngIf="files.length ===0"  class="dropzone" appDropfiles (fileDropped) ="onFileDropped($event)"  >
 <!--             multiple (change)="fileBrowseHandler( $event.target.files)"-->
              <input class="inputDrop" type="file" #fileDropRef id="fileDropRef"  />
              <img class="imagenesDrop" src="assets/imagenes/ic-upload-file.svg" alt="">
@@ -70,6 +66,10 @@
              <h3 class="h3Drop">or</h3>
              <label class="labelDrop" for="fileDropRef">Browse for file</label>
            </div>
+           <div *ngIf="files.length !==0">
+             Solo se permite un archivo!!!
+           </div>
+
            <div class="files-list" >
              <div class="single-file" *ngFor="let file of files; let i = index">
                <img class="imagenesDrop" src="assets/imagenes/ic-file.svg" width="45px" alt="file">

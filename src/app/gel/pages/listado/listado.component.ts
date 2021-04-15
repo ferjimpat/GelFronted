@@ -13,7 +13,7 @@ export class ListadoComponent implements OnInit {
 
   equipos: Equiposgel[] = [];
   cargando = false;
-id: any;
+  id: any;
 
   constructor( private gelService: GelService,
                private route: ActivatedRoute) {

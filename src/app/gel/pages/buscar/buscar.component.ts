@@ -12,7 +12,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 })
 export class BuscarComponent implements OnInit {
 
-  termino: string = '';
+  termino = '';
   equipo: Equiposgel[] = [];
   /* equipoSeleccionado!: any; -> Hemos quitado el signo de admiración para que
   * en la funcion opcionSeleccionada, el condicional if, me pueda aceptar una variable

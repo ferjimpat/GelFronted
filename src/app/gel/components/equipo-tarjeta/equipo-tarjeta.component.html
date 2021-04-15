@@ -6,7 +6,7 @@
   </mat-card-header>
 
 <!--  <img mat-card-image src="assets/{{equipo.ticketcompra}}.jpg ">-->
-  <img class="poster" mat-card-image [src] =" equipo | imagen " alt="{{ equipo.ticketcompra }}">
+  <img class="poster" mat-card-image [src] =" equipo | imagen " alt="{{ equipo.factura }}">
 
   <mat-card-content>
     <h3>Nombre equipo:   {{ equipo.serial }}</h3>
@@ -16,14 +16,14 @@
                      fxLayout="row" >
 
     <button mat-raised-button
-            color="basic"
-            [routerLink]="['/equipos', equipo.id]"   >
+            color="basic">
+<!--            [routerLink]="['/equipos', equipo.id]"   >-->
       Leer más ...
     </button>
 
     <button mat-raised-button
-            color="primary"
-            [routerLink]="['/equipos/editar', equipo.id]"   >
+            color="primary">
+<!--            [routerLink]="['/equipos/editar', equipo.id]"   >-->
       Editar ...
     </button>
 

@@ -5,9 +5,9 @@ export interface Equiposgel {
   id?: string;
   serial: string;
   fechaCompra: Date;
-  factura: string;
+  factura?: string;
   lugarInstalacion?: string;
-  ticketcompra?: string[];
+
 }
 // http:// ... direccion .. .com/img.png [] string
 export interface Usuario {

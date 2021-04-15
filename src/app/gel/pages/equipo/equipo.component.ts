@@ -29,7 +29,8 @@ export class EquipoComponent  implements OnInit{
 
     lugarInstalacion: '',
     fechaCompra: new Date(),
-    ticketcompra: [] ,
+    // ticketcompra: [] ,
+    factura: ''
   };
 
   /*leemos nuestra Url, utilizando ActivateRoute */
