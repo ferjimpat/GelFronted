@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -28,7 +28,7 @@ import {FileItem} from '../../models/file-item';
     `
   ]
 })
-export class AgregarComponent implements OnInit {
+export class AgregarComponent implements OnInit, AfterViewInit{
   // para la directiva
   @ViewChild('fileDropRef', { static: false }) fileDropEl!: ElementRef;
   files: any[] = [];
@@ -58,6 +58,7 @@ export class AgregarComponent implements OnInit {
 
 
 
+@Input() idEditar!: string;
 
   constructor( private gelServicio: GelService,
                private activateRoute: ActivatedRoute,
@@ -66,19 +67,24 @@ export class AgregarComponent implements OnInit {
                private snackBar: MatSnackBar,
                private dialog: MatDialog  ) { }
 
+
+  ngAfterViewInit(): void {
+    // console.log('Editar equipos', editarEquipo);
+  }
+
    ngOnInit(): void {
 
-    if ( !this.router.url.includes('editar')){  return;  }
-
-    // desestructuracion ({ id })
-    this.activateRoute.params
-      .pipe(
-        switchMap( ({id}) => this.gelServicio.getEquipoPorId( id ))
-      )
-      .subscribe( resp => {
-        this.fichaEquipo = resp;
-        console.log( this.fichaEquipo);
-      });
+    // if ( !this.router.url.includes('editar')){  return;  }
+    //
+    // // desestructuracion ({ id })
+    // this.activateRoute.params
+    //   .pipe(
+    //     switchMap( ({id}) => this.gelServicio.getEquipoPorId( id ))
+    //   )
+    //   .subscribe( resp => {
+    //     this.fichaEquipo = resp;
+    //     console.log( this.fichaEquipo);
+    //   });
 
     // como this.equipo esta asociado a los campos mediante el [ (ngModel)], se autorellenara
     // los campos
@@ -236,5 +242,6 @@ export class AgregarComponent implements OnInit {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
+
 
 }

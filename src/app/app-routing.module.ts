@@ -24,8 +24,7 @@ const routes: Routes = [
   component: HidrogelPageComponent
 },
   {
-    path: '**',
-    redirectTo: 'auth'
+    path: '**', pathMatch: 'full',   redirectTo: 'auth'
   }
 ];
 

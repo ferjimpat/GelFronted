@@ -31,12 +31,11 @@ const routes: Routes = [
         component: BuscarComponent
       },
       {
-        path: ':id',
+        path: 'detalles',
         component: EquipoComponent
       },
       {
-        path: '**',
-        redirectTo: 'listado'
+        path: '**', pathMatch: 'full',  redirectTo: 'listado'
       },
 
     ]

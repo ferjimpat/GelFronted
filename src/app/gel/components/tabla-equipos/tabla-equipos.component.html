@@ -19,14 +19,13 @@
     <td>
       <button mat-raised-button
               color="basic">
-<!--              [routerLink]="['/equipos', e.id]"   >-->
+
         Leer más ...
       </button>
     </td>
     <td>
-      <button mat-raised-button
-              color="primary">
-<!--              [routerLink]="['/equipos/editar', e.id]"   >-->
+<!--      [routerLink]="['/equipos/editar']"    -->
+      <button mat-raised-button color="primary"  (click)="capturaID( e.id! )"  >
         Editar ...
       </button>
     </td>

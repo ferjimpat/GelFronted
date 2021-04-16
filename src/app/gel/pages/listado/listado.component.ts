@@ -32,7 +32,7 @@ export class ListadoComponent implements OnInit {
   ngOnInit(): void {
    this.getEquipos();
    this.cargando = true;
-   this.Usuario =  this.getUsuario.almacenaUsuario;
+
    console.log('Usuario', this.Usuario);
   }
   getEquipos(): void {

@@ -1,4 +1,4 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Equiposgel} from '../../interfaces/equipogel.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GelService} from '../../services/gel.service';
@@ -18,6 +18,7 @@ import {FileItem} from '../../models/file-item';
   ]
 })
 export class EquipoComponent  implements OnInit{
+
 
 
   // con el el signo '!', le indico a TS que confie en que llegará info
@@ -43,14 +44,15 @@ export class EquipoComponent  implements OnInit{
 
         // this.activateRoute.params
         //   .subscribe(  ({ id }) => console.log( id ) );
-    this.activateRoute.params
-      .pipe(
-        switchMap(({ id })  => this.gelServices.getEquipoPorId(id))
-      )
-      .subscribe( (resp: Equiposgel) => {
-        this.equipo = resp;
-        console.log('Que hay :', this.equipo);
-      });
+    // this.activateRoute.params
+    //   .pipe(
+    //     switchMap(({ id })  => this.gelServices.getEquipoPorId(id))
+    //   )
+    //   .subscribe( (resp: Equiposgel) => {
+    //     this.equipo = resp;
+    //     console.log('Que hay :', this.equipo);
+    //   });
+
 
   }
 
