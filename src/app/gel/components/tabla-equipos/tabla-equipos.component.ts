@@ -14,7 +14,7 @@ export class TablaEquiposComponent implements OnInit {
 
   // recibimos las caracteristicas del equipo mediante el @Input
   @Input() equipos!: Equiposgel[]; // ! -> decimos a TS que confie en que habrá info
-  @Output() editarEquipo: EventEmitter<string> = new EventEmitter<string>();
+  // @Output() editarEquipo: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(  private router: Router ) { }
 
@@ -31,10 +31,19 @@ export class TablaEquiposComponent implements OnInit {
   capturaID(id: string, e: Equiposgel ): any {
 
     console.log('id tabla equipos', id);
-    this.editarEquipo.emit( id );
+    // this.editarEquipo.emit( id );
     this.router.navigate(['equipos/editar'], {
       state: {
         key: id,
+        data: e
+      }
+    });
+  }
+
+  detalleID(s: string, e: Equiposgel) {
+    this.router.navigate(['equipos/detalles'], {
+      state: {
+        key: s,
         data: e
       }
     });

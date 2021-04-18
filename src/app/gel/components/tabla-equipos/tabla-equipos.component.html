@@ -17,8 +17,7 @@
     <td>{{e.fechaCompra | date }}</td>
     <td> {{ e.lugarInstalacion }} </td>
     <td>
-      <button mat-raised-button
-              color="basic">
+      <button mat-raised-button color="basic" (click)="detalleID(e.id!, e)">
 
         Leer más ...
       </button>
