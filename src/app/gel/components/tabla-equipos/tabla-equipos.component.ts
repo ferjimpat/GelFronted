@@ -23,13 +23,19 @@ export class TablaEquiposComponent implements OnInit {
 
 
   }
+  // https://medium.com/@esteban03/angular-enviando-objects-en-router-mediante-state-c58ca6bf9469
+// utilizando el state definido dentro de la libreria Router
 
+  capturaID(id: string, e: Equiposgel ): any {
 
-  capturaID(id: string ): any {
-
-    console.log('id', id);
+    console.log('id tabla equipos', id);
     this.editarEquipo.emit( id );
-    this.router.navigate(['equipos/editar']);
+    this.router.navigate(['equipos/editar'], {
+      state: {
+        key: id,
+        data: e
+      }
+    });
   }
 }
 

@@ -65,8 +65,18 @@ export class AgregarComponent implements OnInit, AfterViewInit{
                private cargaImagenesService: CargaImagenesService,
                private router: Router,
                private snackBar: MatSnackBar,
-               private dialog: MatDialog  ) { }
+               private dialog: MatDialog  ) {
+    this.receiverParameters();
+  }
 
+
+  // bonito descubrimiento
+  private receiverParameters(): any {
+    // @ts-ignore
+    const { data, key} = this.router.getCurrentNavigation()?.extras.state;
+    console.log( key, data);
+    this.fichaEquipo = data;
+  }
 
   ngAfterViewInit(): void {
     // console.log('Editar equipos', editarEquipo);
@@ -242,6 +252,7 @@ export class AgregarComponent implements OnInit, AfterViewInit{
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
+
 
 
 }
