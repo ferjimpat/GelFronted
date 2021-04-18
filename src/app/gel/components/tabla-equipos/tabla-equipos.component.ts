@@ -23,8 +23,10 @@ export class TablaEquiposComponent implements OnInit {
 
 
   }
-  // https://medium.com/@esteban03/angular-enviando-objects-en-router-mediante-state-c58ca6bf9469
-// utilizando el state definido dentro de la libreria Router
+  /* https://medium.com/@esteban03/angular-enviando-objects-en-router-mediante-state-c58ca6bf9469
+ utilizando el state definido dentro de la libreria Router, paso el objeto a agregar.components
+
+   */
 
   capturaID(id: string, e: Equiposgel ): any {
 

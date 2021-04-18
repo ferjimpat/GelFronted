@@ -66,20 +66,28 @@ export class AgregarComponent implements OnInit, AfterViewInit{
                private router: Router,
                private snackBar: MatSnackBar,
                private dialog: MatDialog  ) {
+
     this.receiverParameters();
   }
 
 
   // bonito descubrimiento
-  private receiverParameters(): any {
+  private  receiverParameters():any  {
+    // hay que controlar cuando se refresca la pantalla que no
     // @ts-ignore
     const { data, key} = this.router.getCurrentNavigation()?.extras.state;
-    console.log( key, data);
-    this.fichaEquipo = data;
+    if (data !== null || key !== null ){
+     console.log( key, data);
+     this.fichaEquipo = data;
+    }
+    else{
+      this.router.navigate( ['/equipos/listado']);
+    }
   }
 
   ngAfterViewInit(): void {
     // console.log('Editar equipos', editarEquipo);
+
   }
 
    ngOnInit(): void {
